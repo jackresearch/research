@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MolecularDynamics.cs">
+    <Files>
+      <File FileName="Assets/GridCreator.cs" Line="66" Column="11" />
+      <File FileName="Assets/SpinScript.cs" Line="40" Column="3" />
+      <File FileName="Assets/MolecularDynamics.cs" Line="29" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
