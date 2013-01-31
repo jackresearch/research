@@ -24,8 +24,14 @@ public class GridCreator : MonoBehaviour {
 	}
 	
 	void Update() {
-		if(Input.GetKeyDown(KeyCode.RightArrow)) {
-			IterateGeneration();	
+		if(Input.GetKeyDown(KeyCode.Alpha1)) {
+			IterateGeneration(1);	
+		} else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			IterateGeneration(2);	
+		} else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			IterateGeneration(3);	
+		} else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			IterateGeneration(4);	
 		}
 	}
 
@@ -114,13 +120,51 @@ public class GridCreator : MonoBehaviour {
 		}
 	}
 	
-	void IterateGeneration() {
-		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++) {
-			 	if (GetNeighborScore(i,j) >= 5) {
-					gridObjects[i,j].transform.renderer.material.color = Color.black;
-				} else {
-					gridObjects[i,j].transform.renderer.material.color = Color.white;	
+	void IterateGeneration(int rule) {
+		if (rule == 1) { 
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+				 	if (GetNeighborScore(i,j) >= 5) {
+						gridObjects[i,j].transform.renderer.material.color = Color.black;
+					} else {
+						gridObjects[i,j].transform.renderer.material.color = Color.white;	
+					}
+				}
+			}
+		} else if (rule == 2) {
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					int neighborScore = GetNeighborScore(i,j);
+					bool isBlack = gridObjects[i,j].transform.renderer.material.color == Color.black;
+				 	if ((neighborScore > 5 && !isBlack) || (neighborScore > 3 && isBlack)) {
+						gridObjects[i,j].transform.renderer.material.color = Color.black;
+					} else {
+						gridObjects[i,j].transform.renderer.material.color = Color.white;	
+					}
+				}
+			}
+		} else if (rule == 3) {
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					int neighborScore = GetNeighborScore(i,j);
+					bool isBlack = gridObjects[i,j].transform.renderer.material.color == Color.black;
+				 	if ((neighborScore >= 5 && !isBlack) || (neighborScore >= 5 && isBlack)) {
+						gridObjects[i,j].transform.renderer.material.color = Color.black;
+					} else {
+						gridObjects[i,j].transform.renderer.material.color = Color.white;	
+					}
+				}
+			}
+		 } else if (rule == 4) {
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					int neighborScore = GetNeighborScore(i,j);
+					bool isBlack = gridObjects[i,j].transform.renderer.material.color == Color.black;
+				 	if ((neighborScore >= Random.Range(1,5) && !isBlack) || (neighborScore >= Random.Range(4,7) && isBlack)) {
+						gridObjects[i,j].transform.renderer.material.color = Color.black;
+					} else {
+						gridObjects[i,j].transform.renderer.material.color = Color.white;	
+					}
 				}
 			}
 		}
